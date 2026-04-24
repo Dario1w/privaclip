@@ -4,7 +4,7 @@ Owner: SEO
 Language: English
 Site reviewed: single page static app in `index.html`
 Date: 2026-04-24
-Current live target: https://privaclip.vercel.app/
+Current live target: https://privaclip.com/
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ PrivaClip must ship with:
 
 ## Immediate Live Site Note
 
-The live URL provided is `https://privaclip.vercel.app/`. A direct fetch through the available web tool did not return page content, and a `site:privaclip.vercel.app PrivaClip` search did not show indexed results at the time of review. Treat this as a launch-stage site that needs indexing setup, Search Console submission, sitemap submission, and live URL inspection.
+The live URL provided is `https://privaclip.com/`. A direct fetch through the available web tool did not return page content, and a `site:privaclip.vercel.app PrivaClip` search did not show indexed results at the time of review. Treat this as a launch-stage site that needs indexing setup, Search Console submission, sitemap submission, and live URL inspection.
 
-Use `https://privaclip.vercel.app/` for staging metadata now. When the final custom domain is connected, replace every canonical, sitemap, robots, OG URL, and internal absolute URL with the final domain.
+Use `https://privaclip.com/` for staging metadata now. When the final custom domain is connected, replace every canonical, sitemap, robots, OG URL, and internal absolute URL with the final domain.
 
 ## Competitive Snapshot
 
@@ -371,8 +371,8 @@ Must include:
 ## Launch And Indexing Checklist
 
 1. Deploy updated pages.
-2. Confirm `https://privaclip.vercel.app/robots.txt` returns 200.
-3. Confirm `https://privaclip.vercel.app/sitemap.xml` returns 200.
+2. Confirm `https://privaclip.com/robots.txt` returns 200.
+3. Confirm `https://privaclip.com/sitemap.xml` returns 200.
 4. Confirm every sitemap URL returns 200 and has a self-referencing canonical.
 5. Add the property in Google Search Console.
 6. Submit the sitemap in Search Console.
@@ -439,25 +439,25 @@ Optional analytics:
 
 ## Recommended Homepage Metadata
 
-Use this for the first implementation pass. Replace `https://privaclip.vercel.app/` with the final production domain.
+Use this for the first implementation pass. Replace `https://privaclip.com/` with the final production domain.
 
 ```html
 <title>PrivaClip - Private Video Converter, No Upload Required</title>
 <meta name="description" content="Convert videos to MP4, WebM, MOV, AVI, GIF, or MP3 directly in your browser. PrivaClip is free, private, and processes files locally with no uploads.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://privaclip.vercel.app/">
+<link rel="canonical" href="https://privaclip.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PrivaClip">
 <meta property="og:title" content="PrivaClip - Private Video Converter, No Upload Required">
 <meta property="og:description" content="Convert videos directly in your browser with no uploads, no account, and no watermark.">
-<meta property="og:url" content="https://privaclip.vercel.app/">
-<meta property="og:image" content="https://privaclip.vercel.app/og-image.png">
+<meta property="og:url" content="https://privaclip.com/">
+<meta property="og:image" content="https://privaclip.com/og-image.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PrivaClip - Private Video Converter">
 <meta name="twitter:description" content="Free browser-based video conversion. Your files stay on your device.">
-<meta name="twitter:image" content="https://privaclip.vercel.app/og-image.png">
+<meta name="twitter:image" content="https://privaclip.com/og-image.png">
 ```
 
 ## Recommended Semantic Page Structure
@@ -595,7 +595,7 @@ Add JSON-LD to the homepage after final domain and social URLs are known.
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "PrivaClip",
-  "url": "https://privaclip.vercel.app/",
+  "url": "https://privaclip.com/",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Any modern browser",
   "description": "PrivaClip is a free private video converter that converts videos directly in your browser with no uploads.",
@@ -630,7 +630,7 @@ Add `robots.txt`:
 User-agent: *
 Allow: /
 
-Sitemap: https://privaclip.vercel.app/sitemap.xml
+Sitemap: https://privaclip.com/sitemap.xml
 ```
 
 Add `sitemap.xml` for the homepage now:
@@ -639,7 +639,7 @@ Add `sitemap.xml` for the homepage now:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://privaclip.vercel.app/</loc>
+    <loc>https://privaclip.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

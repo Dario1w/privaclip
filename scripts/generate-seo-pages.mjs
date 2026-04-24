@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const site = 'https://privaclip.vercel.app';
+const site = 'https://privaclip.com';
 const navItems = [
   ['Tools', '/tools/'],
   ['MOV to MP4', '/mov-to-mp4/'],
