@@ -252,7 +252,7 @@ const corePages = [
       ['Local processing', 'PrivaClip is designed so selected video and audio files are processed in your browser instead of being uploaded to a PrivaClip conversion server. The working file is handled in the active browser session while conversion runs.'],
       ['Third-party code', 'PrivaClip loads browser conversion assets from a CDN, including FFmpeg.wasm related files. Loading the conversion engine is separate from uploading your selected media file.'],
       ['Session data', 'Refreshing or closing the tab clears the current conversion workflow. Downloaded files are saved only where your browser saves them on your device.'],
-      ['Analytics, ads, and cookies', 'PrivaClip should not collect file names, file contents, or private media metadata. If analytics or advertising scripts are added, this page should be updated to describe them clearly.']
+      ['Analytics, ads, and cookies', 'PrivaClip may load Google AdSense to support the service with advertising. AdSense can use cookies, device identifiers, and page context to measure and personalize ads depending on the visitor\'s Google settings and consent choices. PrivaClip should not collect file names, file contents, or private media metadata for advertising.']
     ]
   },
   {
@@ -321,8 +321,10 @@ function layout(page, body, structuredData) {
 <title>${escapeHtml(page.title)}</title>
 <meta name="description" content="${escapeHtml(page.description)}">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="google-adsense-account" content="ca-pub-5471295283942737">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5471295283942737" crossorigin="anonymous"></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PrivaClip">
 <meta property="og:title" content="${escapeHtml(page.title)}">
