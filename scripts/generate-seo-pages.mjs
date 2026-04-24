@@ -240,10 +240,10 @@ const corePages = [
     h1: 'Privacy',
     intro: 'PrivaClip is designed so media conversion happens in your browser. When you select a file, the file is loaded into browser memory on your device and processed locally using browser-based technology.',
     sections: [
-      ['Local processing', 'PrivaClip does not need to upload your video or audio file to a PrivaClip conversion server. Your working file stays in the active browser session while conversion runs.'],
-      ['Third-party code', 'PrivaClip may load conversion engine assets from a CDN, including FFmpeg.wasm related files. Loading code is separate from uploading your selected media file.'],
+      ['Local processing', 'PrivaClip is designed so selected video and audio files are processed in your browser instead of being uploaded to a PrivaClip conversion server. The working file is handled in the active browser session while conversion runs.'],
+      ['Third-party code', 'PrivaClip loads browser conversion assets from a CDN, including FFmpeg.wasm related files. Loading the conversion engine is separate from uploading your selected media file.'],
       ['Session data', 'Refreshing or closing the tab clears the current conversion workflow. Downloaded files are saved only where your browser saves them on your device.'],
-      ['Analytics and cookies', 'If analytics are added later, they should not collect file names, file contents, or private media metadata. Any production analytics setup should be disclosed here.']
+      ['Analytics, ads, and cookies', 'PrivaClip should not collect file names, file contents, or private media metadata. If analytics or advertising scripts are added, this page should be updated to describe them clearly.']
     ]
   },
   {
@@ -266,7 +266,7 @@ const corePages = [
     h1: 'Contact PrivaClip',
     intro: 'Need help with PrivaClip, want to report a bug, or have a privacy question? Use the contact details below and include enough context to reproduce the issue.',
     sections: [
-      ['Support and issues', 'Use the GitHub repository at https://github.com/Dario1w/privaclip for technical issues and product feedback. Add a dedicated support email here when the final domain is connected.'],
+      ['Support and issues', 'Use the GitHub repository at https://github.com/Dario1w/privaclip for technical issues and product feedback. A dedicated support email can be added here once the mailbox for privaclip.com is configured.'],
       ['Bug reports', 'Include your browser, device, input format, output format, approximate file size, and the error message if one appeared. Do not send private media unless support explicitly asks for a safe sample file.'],
       ['Privacy questions', 'For privacy-related questions, explain what you are trying to verify and which page or feature you are asking about.']
     ]
@@ -401,7 +401,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px;color:var(--muted);f
     </div>
     <div class="hbadge hbadge-green">
       <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 1L11 3.5V6.5C11 9 8.5 11 6 12 3.5 11 1 9 1 6.5V3.5L6 1Z"/></svg>
-      100% Private
+      Local processing
     </div>
   </div>
 </header>
@@ -447,7 +447,7 @@ function converterPage(page) {
   </div>
 </section>
 <section class="grid" aria-label="Benefits">
-  <div class="card"><h3>No upload required</h3><p>Your selected media is processed locally in your browser.</p></div>
+  <div class="card"><h3>No required upload</h3><p>Your selected media is processed locally in your browser.</p></div>
   <div class="card"><h3>No account</h3><p>Use the converter without sign-up, queues, or project setup.</p></div>
   <div class="card"><h3>No watermark</h3><p>Download a clean converted file after processing completes.</p></div>
 </section>
