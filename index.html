@@ -993,7 +993,7 @@ async function loadFFmpeg() {
     loadFill.style.width = '20%';
     ff = createFFmpeg({
       log: true,
-      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
+      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
       progress: ({ ratio }) => {
         const p = Math.max(1, Math.min(99, Math.round(ratio * 100)));
         setProgress(p, 'Processing... ' + p + '%');
