@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <defs>
+    <linearGradient id="g" x1="4" y1="4" x2="68" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="72" height="72" rx="16" fill="#09090f"/>
+  <path d="M36 5L67 22.5V49.5L36 67L5 49.5V22.5L36 5Z" fill="url(#g)" opacity="0.18"/>
+  <path d="M36 9L63 24.5V47.5L36 63L9 47.5V24.5L36 9Z" stroke="url(#g)" stroke-width="2" fill="none"/>
+  <rect x="11" y="26" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <rect x="11" y="34" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <rect x="11" y="42" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <rect x="57" y="26" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <rect x="57" y="34" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <rect x="57" y="42" width="4" height="6" rx="1.5" fill="url(#g)" opacity="0.65"/>
+  <path d="M28 22L51 36L28 50V22Z" fill="url(#g)"/>
+</svg>

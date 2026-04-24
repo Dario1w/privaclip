@@ -7,6 +7,7 @@
 <meta name="description" content="Convert videos to MP4, WebM, MOV, AVI, GIF, or MP3 directly in your browser. PrivaClip is free, private, and processes files locally with no uploads.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://privaclip.vercel.app/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 <meta property="og:type" content="website">
@@ -473,8 +474,8 @@ footer a:hover{text-decoration:underline}
 
 <!-- HEADER -->
 <header>
-  <div class="logo">
-    <svg width="30" height="30" viewBox="0 0 72 72" fill="none">
+  <a class="logo" href="/" aria-label="PrivaClip home">
+    <svg width="30" height="30" viewBox="0 0 72 72" fill="none" aria-hidden="true">
       <path d="M36 4L68 22V50L36 68L4 50V22L36 4Z" fill="url(#h1)" opacity="0.12"/>
       <path d="M36 8L64 24.5V47.5L36 64L8 47.5V24.5L36 8Z" stroke="url(#h1)" stroke-width="1.5" fill="none"/>
       <rect x="10" y="26" width="3" height="5" rx="1" fill="url(#h1)" opacity="0.6"/>
@@ -492,7 +493,7 @@ footer a:hover{text-decoration:underline}
       <div class="logo-name">PrivaClip</div>
       <div class="logo-tag">Private Video Converter</div>
     </div>
-  </div>
+  </a>
   <nav class="main-nav" aria-label="Primary">
     <a href="/tools/">Tools</a>
     <a href="/mov-to-mp4/">MOV to MP4</a>
