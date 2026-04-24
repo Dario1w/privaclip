@@ -455,7 +455,7 @@ footer a:hover{text-decoration:underline}
 <body>
 
 <!-- LOADING -->
-<div id="loadingOverlay">
+<div id="loadingOverlay" class="hidden">
   <div class="load-logo">PrivaClip</div>
   <div class="load-sub">Getting your workspace ready...</div>
   <div class="load-bar"><div class="load-fill" id="loadFill"></div></div>
@@ -805,7 +805,8 @@ footer a:hover{text-decoration:underline}
 <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
 <script>
 (async () => {
-const { createFFmpeg, fetchFile } = FFmpeg;
+let createFFmpeg = null;
+let fetchFile = null;
 
 // State
 let ff          = null;
@@ -817,6 +818,7 @@ let vidW        = 0;
 let vidH        = 0;
 let ready       = false;
 let selFmt      = 'mp4';
+let loadingPromise = null;
 
 // DOM
 const $ = id => document.getElementById(id);
@@ -849,11 +851,24 @@ const moreBody     = $('moreBody');
 
 // ── Load FFmpeg ──────────────────────────────────────────────
 async function loadFFmpeg() {
+  if (ready) return true;
+  if (loadingPromise) return loadingPromise;
+  loadingPromise = (async () => {
   try {
+    if (!window.FFmpeg) throw new Error('FFmpeg library did not load');
+    ({ createFFmpeg, fetchFile } = window.FFmpeg);
+    loadOverlay.classList.remove('hidden', 'fade-out');
+    loadOverlay.querySelector('.load-logo').textContent = 'PrivaClip';
+    loadOverlay.querySelector('.load-sub').textContent = 'Loading the private conversion engine...';
+    loadOverlay.querySelector('.load-sub').style.display = '';
+    loadOverlay.querySelector('.load-bar').style.display = '';
+    loadOverlay.querySelector('.load-dots').style.display = '';
+    loadErr.style.display = 'none';
+    loadFill.style.width = '5%';
     loadFill.style.width = '20%';
     ff = createFFmpeg({
       log: true,
-      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
+      corePath: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
       progress: ({ ratio }) => {
         const p = Math.max(1, Math.min(99, Math.round(ratio * 100)));
         setProgress(p, 'Processing... ' + p + '%');
@@ -867,14 +882,25 @@ async function loadFFmpeg() {
       loadOverlay.classList.add('fade-out');
       setTimeout(() => loadOverlay.classList.add('hidden'), 420);
     }, 300);
+    return true;
   } catch (e) {
     console.error(e);
     loadOverlay.querySelector('.load-logo').textContent = 'Could not start';
     loadOverlay.querySelector('.load-sub').style.display = 'none';
     loadOverlay.querySelector('.load-bar').style.display = 'none';
     loadOverlay.querySelector('.load-dots').style.display = 'none';
+    loadErr.innerHTML =
+      '<strong>Could not start PrivaClip</strong><br>' +
+      'Safari can block advanced browser video engines, especially older versions or private browsing sessions.<br><br>' +
+      '<strong style="color:#fcd34d">Quick fixes:</strong><br>' +
+      'Update Safari, turn off Private Browsing for this site, or try Chrome, Edge, or Firefox for the most reliable browser conversion.<br><br>' +
+      '<span style="color:#6ee7b7">Your selected file was not uploaded.</span>';
     loadErr.style.display = 'block';
+    loadingPromise = null;
+    return false;
   }
+  })();
+  return loadingPromise;
 }
 
 // ── Format buttons ───────────────────────────────────────────
@@ -1022,7 +1048,13 @@ processBtn.addEventListener('click', processVideo);
 
 async function processVideo() {
   if (!inputFile) return;
-  if (!ready) { showErr(settingsError, 'PrivaClip is still starting up. Please wait a moment.'); return; }
+  if (!ready) {
+    const loaded = await loadFFmpeg();
+    if (!loaded) {
+      showErr(settingsError, 'The browser conversion engine could not start. Try updating Safari, leaving Private Browsing, or using Chrome, Edge, or Firefox.');
+      return;
+    }
+  }
   hideEl(settingsError);
 
   const trimStart = parseFloat($('trimStart').value) || 0;
@@ -1193,7 +1225,7 @@ function showEl(el)   { el.classList.remove('hidden'); }
 function hideEl(el)   { el.classList.add('hidden'); }
 function showErr(el,m){ el.textContent = m; showEl(el); }
 
-loadFFmpeg();
+loadOverlay.classList.add('hidden');
 })();
 </script>
 </body>
