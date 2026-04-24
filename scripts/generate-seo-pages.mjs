@@ -218,6 +218,14 @@ const pages = [
   }
 ];
 
+const toolHub = {
+  path: 'tools',
+  title: 'Video Converter Tools - PrivaClip',
+  description: 'Browse PrivaClip tools for private browser-based video conversion, audio extraction, GIF creation, trimming, muting, resizing, and compression.',
+  h1: 'Video Converter Tools',
+  intro: 'Browse PrivaClip tools for common private video conversion tasks. Each page targets a specific job and links back to the browser converter so you can process files without a required media upload.'
+};
+
 const corePages = [
   {
     path: 'privacy',
@@ -273,6 +281,7 @@ const corePages = [
 ];
 
 const labels = Object.fromEntries([...pages, ...corePages].map(p => [p.path, p.h1]));
+labels[toolHub.path] = toolHub.h1;
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, char => ({
@@ -348,6 +357,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;co
   <a class="brand" href="/"><span>PrivaClip</span></a>
   <nav aria-label="Primary">
     <a href="/#converter">Converter</a>
+    <a href="/tools/">Tools</a>
     <a href="/privacy/">Privacy</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -355,7 +365,7 @@ footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;co
 </header>
 <main>${body}</main>
 <footer>
-  <div><a href="/">Private Video Converter</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/terms/">Terms</a></div>
+  <div><a href="/">Private Video Converter</a> · <a href="/tools/">Tools</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/terms/">Terms</a></div>
   <div style="margin-top:6px">PrivaClip processes video in your browser with no required media upload.</div>
 </footer>
 </body>
@@ -416,6 +426,48 @@ function converterPage(page) {
   return layout(page, body, schema);
 }
 
+function toolsPage(page) {
+  const moneyLinks = pages
+    .filter(item => ['mov-to-mp4', 'webm-to-mp4', 'avi-to-mp4', 'mkv-to-mp4', 'mp4-to-webm', 'mp4-to-mp3', 'mov-to-mp3', 'video-to-gif'].includes(item.path))
+    .map(item => `<a href="/${item.path}/">${escapeHtml(item.h1)}</a>`)
+    .join('');
+  const utilityLinks = pages
+    .filter(item => ['compress-video', 'trim-video', 'mute-video', 'resize-video', 'convert-video-to-9-16', 'extract-audio-from-video'].includes(item.path))
+    .map(item => `<a href="/${item.path}/">${escapeHtml(item.h1)}</a>`)
+    .join('');
+  const body = `
+<section>
+  <div class="eyebrow">Private conversion hub</div>
+  <h1>${escapeHtml(page.h1)}</h1>
+  <p class="intro">${escapeHtml(page.intro)}</p>
+  <div class="cta">
+    <a class="btn primary" href="/#converter">Open the converter</a>
+    <a class="btn secondary" href="/privacy/">How privacy works</a>
+  </div>
+</section>
+<section>
+  <h2>Format converters</h2>
+  <p>Use these pages when you know the exact source and output format you need.</p>
+  <div class="links">${moneyLinks}</div>
+</section>
+<section>
+  <h2>Video tools</h2>
+  <p>Use these tools for compression, trimming, muting, resizing, vertical video, and audio extraction.</p>
+  <div class="links">${utilityLinks}</div>
+</section>
+<section class="panel">
+  <h2>Why these pages exist</h2>
+  <p>Each tool page focuses on one conversion task. That makes PrivaClip easier to navigate, easier for search engines to understand, and more helpful for people who arrive with a specific job like converting MOV to MP4 or extracting MP3 audio from a video.</p>
+</section>`;
+  return layout(page, body, {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: page.h1,
+    url: `${site}/${page.path}/`,
+    description: page.description
+  });
+}
+
 function corePage(page) {
   const sections = page.sections.map(([title, text]) => `<section><h2>${escapeHtml(title)}</h2><p>${escapeHtml(text)}</p></section>`).join('');
   const body = `
@@ -450,9 +502,10 @@ function writePage(page, html) {
 }
 
 for (const page of pages) writePage(page, converterPage(page));
+writePage(toolHub, toolsPage(toolHub));
 for (const page of corePages) writePage(page, corePage(page));
 
-const sitemapUrls = [''].concat([...pages, ...corePages].map(page => page.path));
+const sitemapUrls = [''].concat([toolHub, ...pages, ...corePages].map(page => page.path));
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapUrls.map(path => `  <url>

@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://privaclip.vercel.app/tools/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://privaclip.vercel.app/mov-to-mp4/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
