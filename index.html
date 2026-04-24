@@ -109,6 +109,7 @@ button,a,summary,input,select{touch-action:manipulation}
   background:rgba(0,0,0,.35);padding:2px 6px;border-radius:4px;font-size:12px;
 }
 .load-err a{color:#a5b4fc}
+.load-note{font-size:12px;color:var(--text-dim);margin-top:4px}
 
 /* ── Header ── */
 header{
@@ -554,6 +555,7 @@ footer a:hover{text-decoration:underline}
   <div class="load-sub">Getting your workspace ready...</div>
   <div class="load-bar"><div class="load-fill" id="loadFill"></div></div>
   <div class="load-dots"><span></span><span></span><span></span></div>
+  <div class="load-note">Only slow the first time — the engine is cached after that.</div>
   <div class="load-err" id="loadErr">
     <strong>Could not start PrivaClip</strong><br>
     Your browser may be blocking the required engine when opening files directly from disk.<br><br>
