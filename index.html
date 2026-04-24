@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VidVault - Private Video Converter</title>
+<title>PrivaClip - Private Video Converter</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -366,12 +366,12 @@ footer a:hover{text-decoration:underline}
       </linearGradient>
     </defs>
   </svg>
-  <div class="load-title">Starting VidVault</div>
+  <div class="load-title">Starting PrivaClip</div>
   <div class="load-sub">Getting your workspace ready...</div>
   <div class="load-bar"><div class="load-fill" id="loadFill"></div></div>
   <div class="load-dots"><span></span><span></span><span></span></div>
   <div id="loadErrBox" style="display:none;margin-top:14px;max-width:360px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:9px;padding:14px 16px;font-size:13px;color:#fca5a5;line-height:1.6;text-align:left">
-    <strong style="color:#f87171">Could not start VidVault</strong><br>
+    <strong style="color:#f87171">Could not start PrivaClip</strong><br>
     Your browser may be blocking the required engine when opening files directly.<br><br>
     <strong style="color:#fcd34d">Quick fix:</strong><br>
     Open a terminal in the folder with <code>index.html</code> and run:<br>
@@ -402,7 +402,7 @@ footer a:hover{text-decoration:underline}
       </defs>
     </svg>
     <div class="logo-text">
-      <span class="logo-name">VidVault</span>
+      <span class="logo-name">PrivaClip</span>
       <span class="logo-tagline">Private Video Converter</span>
     </div>
   </div>
@@ -427,7 +427,7 @@ footer a:hover{text-decoration:underline}
     <div>
       <div class="priv-title">Your files never leave your device</div>
       <div class="priv-body">
-        VidVault processes everything <strong>directly inside your browser</strong> using WebAssembly.
+        PrivaClip processes everything <strong>directly inside your browser</strong> using WebAssembly.
         There is <strong>no server, no upload, and no cloud</strong> - everything stays 100% on your device.
         We literally cannot see your files. Not even a single byte is sent anywhere.
       </div>
@@ -603,7 +603,7 @@ footer a:hover{text-decoration:underline}
 </main>
 
 <footer>
-  <div class="ft-logo">VidVault</div>
+  <div class="ft-logo">PrivaClip</div>
   <div>Everything runs in your browser. No server, no uploads, no cloud.</div>
   <div style="margin-top:6px;font-size:12px">
     Powered by <a href="https://github.com/ffmpegwasm/ffmpeg.wasm" target="_blank">FFmpeg.wasm</a>
@@ -762,7 +762,7 @@ processBtn.addEventListener('click', processVideo);
 
 async function processVideo() {
   if (!inputFile) return;
-  if (!ffmpegReady) { showErr(settingsError, 'VidVault is still starting up. Please wait a moment and try again.'); return; }
+  if (!ffmpegReady) { showErr(settingsError, 'PrivaClip is still starting up. Please wait a moment and try again.'); return; }
   hideEl(settingsError);
 
   const trimStart = parseFloat($('trimStart').value) || 0;
@@ -803,7 +803,7 @@ async function processVideo() {
     try { ff.FS('unlink', inName);  } catch(_) {}
     try { ff.FS('unlink', outName); } catch(_) {}
 
-    outFilename = inputFile.name.replace(/\.[^.]+$/, '') + '_vidvault.' + ext;
+    outFilename = inputFile.name.replace(/\.[^.]+$/, '') + '_privaclip.' + ext;
     renderResult(inputFile.size, outputBlob.size, fmt.toUpperCase());
     hideEl(progressCard); showEl(resultCard);
 
